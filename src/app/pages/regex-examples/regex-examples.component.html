@@ -1,0 +1,36 @@
+<mat-card>
+  <mat-card-title>Exemplos de Regex e Validações Avançadas</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="regexForm" (ngSubmit)="testRegex()">
+      <mat-form-field appearance="fill">
+        <mat-label>Texto</mat-label>
+        <input matInput formControlName="text" required>
+        <mat-error *ngIf="regexForm.get('text')?.hasError('required')">Texto é obrigatório</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Regex</mat-label>
+        <input matInput formControlName="regex" required>
+        <mat-error *ngIf="regexForm.get('regex')?.hasError('required')">Regex é obrigatório</mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="regexForm.invalid">Testar Regex</button>
+    </form>
+
+    <p>{{ matchResult }}</p>
+
+    <h3>Teoria</h3>
+    <p>Uma expressão regular é uma sequência de caracteres que define um padrão de pesquisa. Pode ser usada para validações, correspondências e substituições de texto.</p>
+
+
+    <h2>Explicação Básica sobre Regex</h2>
+  <p>Uma expressão regular (regex) é uma sequência de caracteres que forma um padrão de pesquisa. Pode ser usada para encontrar, substituir ou validar textos.</p>
+
+  <h3>Componentes de Regex</h3>
+  <div [innerHTML]="regexComponents"></div>
+
+  <h3>Exemplos de Regex</h3>
+  <div [innerHTML]="regexExamples"></div>
+
+  </mat-card-content>
+</mat-card>

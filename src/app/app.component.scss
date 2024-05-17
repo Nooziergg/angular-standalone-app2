@@ -1,0 +1,8 @@
+.content-container {
+  display: flex;
+  padding: 20px;
+}
+
+router-outlet + * { // Seleciona todos os elementos que estão diretamente após o router-outlet
+  width: 100%;
+}

@@ -1,0 +1,22 @@
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+  <mat-card>
+    <mat-card-title>Editar Perfil</mat-card-title>
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input matInput formControlName="nome" required>
+        <mat-error *ngIf="editForm.get('nome')?.hasError('required')">Nome é obrigatório</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" required>
+        <mat-error *ngIf="editForm.get('email')?.hasError('required')">Email é obrigatório</mat-error>
+        <mat-error *ngIf="editForm.get('email')?.hasError('email')">Email inválido</mat-error>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="editForm.invalid">Salvar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

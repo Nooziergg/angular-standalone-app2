@@ -1,0 +1,54 @@
+<form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
+  <mat-card>
+    <mat-card-title>Cadastro</mat-card-title>
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input matInput formControlName="nome" required>
+        <mat-error *ngIf="cadastroForm.get('nome')?.hasError('required') && (cadastroForm.get('nome')?.touched || cadastroForm.get('nome')?.dirty)">
+          Nome é obrigatório
+        </mat-error>
+        <mat-error *ngIf="cadastroForm.get('nome')?.hasError('minlength') && (cadastroForm.get('nome')?.touched || cadastroForm.get('nome')?.dirty)">
+          Nome deve ter ao menos 3 caracteres
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" required>
+        <mat-error *ngIf="cadastroForm.get('email')?.hasError('required') && (cadastroForm.get('email')?.touched || cadastroForm.get('email')?.dirty)">
+          Email é obrigatório
+        </mat-error>
+        <mat-error *ngIf="cadastroForm.get('email')?.hasError('email') && (cadastroForm.get('email')?.touched || cadastroForm.get('email')?.dirty)">
+          Email inválido
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Senha</mat-label>
+        <input matInput type="password" formControlName="senha" required>
+        <mat-error *ngIf="cadastroForm.get('senha')?.hasError('required') && (cadastroForm.get('senha')?.touched || cadastroForm.get('senha')?.dirty)">
+          Senha é obrigatória
+        </mat-error>
+        <mat-error *ngIf="cadastroForm.get('senha')?.hasError('passwordStrength') && (cadastroForm.get('senha')?.touched || cadastroForm.get('senha')?.dirty)">
+          Senha deve ter letras maiúsculas, minúsculas e números
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>CPF</mat-label>
+        <input matInput formControlName="cpf" mask="CPF_CNPJ" required>
+        <mat-error *ngIf="cadastroForm.get('cpf')?.hasError('required') && (cadastroForm.get('cpf')?.touched || cadastroForm.get('cpf')?.dirty)">
+          CPF é obrigatório
+        </mat-error>
+        <mat-error *ngIf="cadastroForm.get('cpf')?.hasError('cpfInvalid') && (cadastroForm.get('cpf')?.touched || cadastroForm.get('cpf')?.dirty)">
+          CPF inválido
+        </mat-error>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="cadastroForm.invalid">Salvar</button>
+      <button mat-button type="button" (click)="onCancel()">Cancelar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

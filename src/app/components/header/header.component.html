@@ -1,0 +1,14 @@
+<mat-toolbar color="primary" class="header-toolbar">
+  <span>{{ authService.isLoggedIn() ? 'Usuário Autenticado' : 'Visitante' }}</span>
+  <span class="spacer"></span>
+  <ng-container *ngIf="authService.isLoggedIn(); else loginLinks">
+    <button mat-button routerLink="/">Home</button>
+    <button mat-button routerLink="/cadastro">Cadastros</button>
+    <button mat-button routerLink="/profile/view">Perfil</button>
+    <button mat-button routerLink="/regex-examples">Exemplos Regex</button>
+    <button mat-button (click)="logout()">Logout</button>
+  </ng-container>
+  <ng-template #loginLinks>
+    <button mat-button routerLink="/login">Login</button>
+  </ng-template>
+</mat-toolbar>

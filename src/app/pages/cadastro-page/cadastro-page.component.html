@@ -1,0 +1,13 @@
+<mat-card>
+  <mat-card-title>Cadastros</mat-card-title>
+  <mat-card-content>
+    <button mat-raised-button color="primary" (click)="addCadastro()">Adicionar Cadastro</button>
+    <mat-list>
+      <mat-list-item *ngFor="let cadastro of (cadastros$ | async)">
+        {{ cadastro.nome }} - {{ cadastro.email }}
+        <button mat-button (click)="editCadastro(cadastro)">Editar</button>
+        <button mat-button color="warn" (click)="deleteCadastro(cadastro.id)">Excluir</button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
