@@ -2,6 +2,7 @@
   <mat-card>
     <mat-card-title>Cadastro</mat-card-title>
     <mat-card-content>
+      <!-- Nome -->
       <mat-form-field appearance="fill">
         <mat-label>Nome</mat-label>
         <input matInput formControlName="nome" required>
@@ -13,6 +14,7 @@
         </mat-error>
       </mat-form-field>
 
+      <!-- Email -->
       <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
         <input matInput formControlName="email" required>
@@ -24,6 +26,7 @@
         </mat-error>
       </mat-form-field>
 
+      <!-- Senha -->
       <mat-form-field appearance="fill">
         <mat-label>Senha</mat-label>
         <input matInput type="password" formControlName="senha" required>
@@ -35,6 +38,7 @@
         </mat-error>
       </mat-form-field>
 
+      <!-- CPF -->
       <mat-form-field appearance="fill">
         <mat-label>CPF</mat-label>
         <input matInput formControlName="cpf" mask="CPF_CNPJ" required>
@@ -45,10 +49,22 @@
           CPF inválido
         </mat-error>
       </mat-form-field>
+
+      <!-- Data de Nascimento -->
+      <mat-form-field appearance="fill">
+        <mat-label>Data de Nascimento</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dataNascimento" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="cadastroForm.get('dataNascimento')?.hasError('required') && (cadastroForm.get('dataNascimento')?.touched || cadastroForm.get('dataNascimento')?.dirty)">
+          Data de Nascimento é obrigatória
+        </mat-error>
+      </mat-form-field>
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button color="primary" type="submit" [disabled]="cadastroForm.invalid">Salvar</button>
       <button mat-button type="button" (click)="onCancel()">Cancelar</button>
+      <button mat-button type="button" (click)="resetDataNascimento()">Resetar Data de Nascimento</button>
     </mat-card-actions>
   </mat-card>
 </form>

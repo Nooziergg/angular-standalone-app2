@@ -7,6 +7,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule} from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
+import { MatDatepicker, MatDatepickerModule } from '@angular/material/datepicker';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 
 @NgModule({
@@ -18,7 +20,8 @@ import { MatListModule } from '@angular/material/list';
     MatCardModule,
     MatIconModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    MatDatepickerModule
   ],
   exports: [
     CommonModule,
@@ -28,7 +31,8 @@ import { MatListModule } from '@angular/material/list';
     MatCardModule,
     MatIconModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    MatDatepickerModule
   ]
 })
 export class SharedModule {}

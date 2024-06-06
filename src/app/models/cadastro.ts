@@ -4,4 +4,5 @@ export interface Cadastro {
   email: string;
   senha: string;
   cpf: string;
+  dataNascimento: string;
 }
